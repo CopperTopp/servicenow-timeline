@@ -1,0 +1,140 @@
+/*
+ *  Expedia Blue:               #00365E
+ *  Expedia Blue Compliment:    #5E2800
+ *  Expedia Yellow:             #FFCB00
+ *  Expedia Yellow Compliment:  #0034FF
+ *  Background:                 #FFF0E6
+ *  Timeline BG:                #CBE2F2
+ */
+
+body {
+  background-color: #2E74AA;
+}
+
+header {
+  background-color: #053B64;
+  margin: 0 50px;
+  width: auto;
+  height: 140px;
+  border-radius: 12px;
+}
+
+header h1 {
+  position: absolute;
+  padding: 0 20px 0 15px;
+  margin: 0;
+  top: 20px;
+  left: 70px;
+  background-color: #FF9200;
+  border-radius: 8px;
+  color: #053B64;
+  font-family: sans-serif;
+  font-size: 100px;
+  font-stretch: condensed;
+  font-weight: 100;
+  text-align: center;
+  vertical-align: middle;
+}
+
+header h2 {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 105px;
+  left: 310px;
+  vertical-align: middle;
+  font-family: sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: #FFAA39;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+header img {
+  position: absolute;
+  padding-left: 5px;
+  padding-top: 3px;
+  top: 15px;
+  right: 65px;
+  background: white;
+  border-radius: 3px;
+}
+
+section {
+  margin: 0 50px 0 50px;
+}
+
+div.timeline-root {
+  margin: 0;
+  padding: 0;
+}
+
+section.timeline-controls {
+  height: 40px;
+  width: auto;
+  border: 3px solid #053B64;
+  background-color: #FFBC63;
+  border-radius: 5px;
+}
+
+div.timeline-control-container {
+  position: relative;
+  top: 10px;
+  left: 20%;
+}
+
+div.timeline-implementers-dead {
+  position: relative;
+  top: 10px;
+  left: 25%;
+}
+
+div.timeline-coordinators-dead {
+  position: relative;
+  top: 10px;
+  left: 25%;
+}
+
+label.timeline-implementers {
+  font-size: 10px;
+}
+select.timeline-implementers {
+  font-size: 10px;
+}
+
+label.timeline-coordinators {
+  font-size: 10px;
+}
+select.timeline-coordinators {
+  font-size: 10px;
+}
+
+.border {
+  position: fixed;
+  top: 0px;
+  width: 55px;
+  height: 1000px;
+  padding: 0;
+  margin: 0;
+  background-color: #99D3FF;
+}
+
+.left-border {
+  left: 0px;
+}
+
+.right-border {
+  right: 0px;
+}
+
+.timeline-coordinators {
+  display: inline;
+  font-family: sans-serif;
+}
+
+.timeline-implementers {
+  display: inline;
+  font-family: sans-serif;
+}

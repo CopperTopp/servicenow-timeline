@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>EWE Global Forward Schedule of Change - Home</title>
+    <base href="/">
+      
+    <!-- Vendor Scripts -->
+    <script type='text/javascript' src="scripts/jquery-2.1.3.js"></script>
+    <!-- ToDo: Use min.js in Production
+    <script type='text/javascript' src="scripts/jquery-2.1.3.min.js"></script>
+    -->
+    <script type="text/javascript" src="scripts/md5.js"></script>
+    <script type="text/javascript" src="http://api.simile-widgets.org/timeline/2.3.1/timeline-api.js?bundle=true"></script>
+    
+    <!-- Stylesheets - Placed here to be after simile widget's .css load -->
+    <link rel="stylesheet" type="text/css" href="styles/timeline.css">
+    <link rel="stylesheet" type="text/css" href="styles/app.css">
+  </head>
+  <body onload="onLoad()" onresize="onResize();">
+    <script type="text/javascript" src="scripts/timeline-wrapper.js"></script>
+    <header>
+      <h1>EWE</h1>
+      <h2>Global Forward Schedule of Change</h2>
+      <img src="img/exp-logo.png">
+    </header>
+    <section class="border left-border"></section>
+    <section class="border right-border"></section>
+    <section>
+      <div id="timeline-root"></div>
+    </section>
+    <section class="timeline-controls">
+      <div class="timeline-control-container">
+        <div class="timeline-controls timeline-implementers">
+          <label class="timeline-controls timeline-implementers">Select by Implementer:</label>
+          <select id="timeline-implementers-select"
+                  class="timeline-controls timeline-select timeline-implementers"
+                  onchange="select_person(this.value);"></select>
+        </div>
+        <div class="timeline-controls timeline-coordinators">
+          <label class="timeline-controls timeline-coordinators">Select by Coordinator:</label>
+          <select id="timeline-coordinators-select"
+                  class="timeline-controls timeline-select timeline-coordinators"
+                  onchange="select_person(this.value);"></select>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
