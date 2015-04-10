@@ -12,13 +12,15 @@ logger.setLevel(configs.log4js_srv.default_level);
 
 var ServiceNow = require('servicenow');
 var servicenow_config = configs.servicenow_dev;
-if (process.env.NODE_ENV && process.env.NODE_ENV == 'production') {
+//NODE_ENV is not working, relcal chef recipe needs to be looked at
+//  For now, defaulting to production since we're only doing reads.
+//if (process.env.NODE_ENV && process.env.NODE_ENV == 'production') {
   logger.info("Loading Production ServiceNow configuration.");
   servicenow_config = configs.servicenow_prod;
-} else {
-  logger.info("Loading Dev ServiceNow configuration.");
-  servicenow_config = configs.servicenow_dev;
-}
+//} else {
+//  logger.info("Loading Dev ServiceNow configuration.");
+//  servicenow_config = configs.servicenow_dev;
+//}
 var client = new ServiceNow.Client(servicenow_config);
 
 var event_data = {};

@@ -3,29 +3,34 @@ var eventSource;
 var event_data;
 
 function onLoad() {
+  //Get local time offset to setup bands.
+  var timezone_offset = -((new Date()).getTimezoneOffset() / 60);
   eventSource = new Timeline.DefaultEventSource();
   var bands = [
     Timeline.createBandInfo({
       eventSource: eventSource,
+      timeZone: timezone_offset,
       width: "30%",
       intervalUnit: Timeline.DateTime.HOUR,
       intervalPixels: 50
     }),
     Timeline.createBandInfo({
       eventSource: eventSource,
-      width: "55%",
+      timeZone: timezone_offset,
+      width: "60%",
       intervalUnit: Timeline.DateTime.DAY,
       intervalPixels: 80
     }),
     Timeline.createBandInfo({
       eventSource: eventSource,
+      timeZone: timezone_offset,
       overview: true,
-      width: "15%",
+      width: "10%",
       intervalUnit: Timeline.DateTime.MONTH,
       intervalPixels: 400
     })
   ];
-  bands[2].syncWith = 0;
+  bands[2].syncWith = 1;
   bands[2].highlight = true;
   bands[1].syncWith = 0;
   bands[1].highlight = true;
@@ -47,7 +52,7 @@ function onLoad() {
       elem = document.createElement("option");
       elem.text = imp;
       elem.value = imp;
-      elem.className = "select-m" + md5;
+      elem.className = "timeline-select select-m" + md5;
       implementer_select.appendChild(elem);
     }
     
@@ -63,7 +68,7 @@ function onLoad() {
       elem = document.createElement("option");
       elem.text = imp;
       elem.value = imp;
-      elem.className = "select-m" + md5;
+      elem.className = "timeline-select select-m" + md5;
       coordinator_select.appendChild(elem);
     }
   });
@@ -87,8 +92,12 @@ function select_person(name) {
   console.log(name + "::" + md5);
   //Update stored events
   var a = eventSource._events._events._a;
-  $("select.timeline-select").val("cleared");
-  $(".select-m" + md5).attr('selected', 'selected');
+  var si = document.getElementById('timeline-implementers-select');
+  var sc = document.getElementById('timeline-coordinators-select');
+  si.value = 'cleared';
+  sc.value = 'cleared';
+  si.value = name;
+  sc.value = name;
   for (var i = 0, l = a.length, e; i < l; i++) {
     e = a[i];
     //Remove 'selected_person' class from all events.

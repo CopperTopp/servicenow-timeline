@@ -6,13 +6,23 @@
     <base href="/">
       
     <!-- Vendor Scripts -->
+    <!-- Replace .min for debug help
     <script type='text/javascript' src="scripts/jquery-2.1.3.js"></script>
-    <!-- ToDo: Use min.js in Production
-    <script type='text/javascript' src="scripts/jquery-2.1.3.min.js"></script>
     -->
+    <!-- Use min.js in Production-->
+    <script type='text/javascript' src="scripts/jquery-2.1.3.min.js"></script>
+    
     <script type="text/javascript" src="scripts/md5.js"></script>
     <script type="text/javascript" src="http://api.simile-widgets.org/timeline/2.3.1/timeline-api.js?bundle=true"></script>
-    
+    <script>
+	  //Override to show correct times in popup bubbles.
+      //  Otherwise, even when corrected by the timeZone Band attribute,
+      //  all times show as GMT, even when they aren't.
+      Timeline.GregorianDateLabeller.prototype.labelPrecise = function(date) {
+        var d = new Date(date);
+        return d.toDateString() + " - " + d.toLocaleTimeString();
+      };
+    </script> 
     <!-- Stylesheets - Placed here to be after simile widget's .css load -->
     <link rel="stylesheet" type="text/css" href="styles/timeline.css">
     <link rel="stylesheet" type="text/css" href="styles/app.css">
@@ -23,6 +33,37 @@
       <h1>EWE</h1>
       <h2>Global Forward Schedule of Change</h2>
       <img src="img/exp-logo.png">
+      <div class="timeline-legend-root">
+        <div class="timeline-legend-title">Legend</div>
+        <div class="timeline-legend-column-1">
+          <div class="timeline-legend-item sn-cancel">
+            <div class="timeline-legend timeline-event-tape sn-cancel"></div>
+            Cancelled
+          </div>
+          <div class="timeline-legend-item sn-draft">
+            <div class="timeline-legend timeline-event-tape sn-draft"></div>
+            Draft
+          </div>
+          <div class="timeline-legend-item sn-pend">
+            <div class="timeline-legend timeline-event-tape sn-pend"></div>
+            Pending
+          </div>
+        </div>
+        <div class="timeline-legend-column-2">
+          <div class="timeline-legend-item sn-approve">
+            <div class="timeline-legend timeline-event-tape sn-approve"></div>
+            Approved
+          </div>
+          <div class="timeline-legend-item sn-implemnt">
+            <div class="timeline-legend timeline-event-tape sn-implemnt"></div>
+            In Progess
+          </div>
+          <div class="timeline-legend-item sn-closed">
+            <div class="timeline-legend timeline-event-tape sn-closed"></div>
+            Closed
+          </div>
+        </div>
+      </div>
     </header>
     <section class="border left-border"></section>
     <section class="border right-border"></section>
@@ -43,6 +84,10 @@
                   class="timeline-controls timeline-select timeline-coordinators"
                   onchange="select_person(this.value);"></select>
         </div>
+      </div>
+      <div class="timeline-controls-help">
+        Select either an Implementer or Coordinator to hightlight their events.
+        Select 'No Selection' to clear all hightlights.
       </div>
     </section>
   </body>
